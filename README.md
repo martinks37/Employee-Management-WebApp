@@ -1,196 +1,59 @@
-[README.md](https://github.com/user-attachments/files/29995113/README.md)
-# Employee Manager — Full Stack Application
+# EmployeeApp
 
-A full stack Employee Management application.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.1.
 
----
+## Development server
 
-## Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Frontend | Angular 17+ |
-| Backend | ASP.NET Core Web API (C#) |
-| Database | MySQL |
-| API Testing | Postman / Swagger |
-
----
-
-## Project Structure
-
-```
-EmployeeManager/
-│
-├── EmployeeAPI/                  # ASP.NET Core Web API
-│   ├── Controllers/
-│   │   └── EmployeeController.cs # All 5 CRUD endpoints
-│   ├── Models/
-│   │   └── Employee.cs           # Employee data model
-│   ├── Data/
-│   │   └── DatabaseHelper.cs     # MySQL connection helper
-│   ├── appsettings.json          # DB connection string
-│   └── Program.cs                # App configuration & middleware
-│
-└── EmployeeApp/                  # Angular Frontend
-    └── src/
-        └── app/
-            ├── models/
-            │   └── employee.ts           # Employee interface
-            ├── services/
-            │   └── employee.service.ts   # API calls via HttpClient
-            ├── employee-list/
-            │   ├── employee-list.ts      # Component logic
-            │   ├── employee-list.html    # Component template
-            │   └── employee-list.css     # Component styles
-            ├── app.ts                    # Root component
-            ├── app.config.ts             # App configuration
-            └── app.routes.ts             # Routing config
-```
-
----
-
-## Features
-
-- View all employees in a table
-- Get employee by ID
-- Add a new employee
-- Update an existing employee
-- Delete an employee
-
----
-
-## API Endpoints
-
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/api/Employee` | Get all employees |
-| GET | `/api/Employee/{id}` | Get employee by ID |
-| POST | `/api/Employee` | Add new employee |
-| PUT | `/api/Employee/{id}` | Update employee |
-| DELETE | `/api/Employee/{id}` | Delete employee |
-
----
-
-## Database Schema
-
-```sql
-CREATE DATABASE EmployeeDB;
-USE EmployeeDB;
-
-CREATE TABLE Employees (
-    Id       INT          PRIMARY KEY AUTO_INCREMENT,
-    Name     VARCHAR(100) NOT NULL,
-    Position VARCHAR(100) NOT NULL,
-    Salary   DECIMAL(10,2)
-);
-```
-
----
-
-## Getting Started
-
-### Prerequisites
-
-- Visual Studio 2022
-- .NET 6.0 or higher
-- MySQL Server & MySQL Workbench
-- Node.js & npm
-- Angular CLI (`npm install -g @angular/cli`)
-- Postman (optional, for API testing)
-
----
-
-### 1. Database Setup
-
-Open MySQL Workbench and run:
-
-```sql
-CREATE DATABASE EmployeeDB;
-USE EmployeeDB;
-
-CREATE TABLE Employees (
-    Id       INT          PRIMARY KEY AUTO_INCREMENT,
-    Name     VARCHAR(100) NOT NULL,
-    Position VARCHAR(100) NOT NULL,
-    Salary   DECIMAL(10,2)
-);
-
-INSERT INTO Employees (Name, Position, Salary) VALUES ('John', 'Manager', 55000);
-INSERT INTO Employees (Name, Position, Salary) VALUES ('Sara', 'Developer', 45000);
-INSERT INTO Employees (Name, Position, Salary) VALUES ('Martin', 'Developer', 47000);
-```
-
----
-
-### 2. Backend Setup (ASP.NET API)
-
-1. Open `EmployeeAPI` folder in Visual Studio
-2. Update `appsettings.json` with your MySQL credentials:
-
-```json
-"ConnectionStrings": {
-    "DefaultConnection": "Server=localhost;Database=EmployeeDB;User=root;Password=yourpassword;"
-}
-```
-
-3. Press **F5** to run the API
-4. Swagger UI opens at `https://localhost:7234/swagger`
-
----
-
-### 3. Frontend Setup (Angular)
+To start a local development server, run:
 
 ```bash
-cd EmployeeApp
-npm install
 ng serve
 ```
 
-Open your browser at `http://localhost:4200`
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
----
+## Code scaffolding
 
-## How It Works
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-```
-Angular (localhost:4200)
-        ↓  HTTP Request
-ASP.NET API (localhost:7234)
-        ↓  SQL Query
-MySQL Database
-        ↓  Data
-        ↑  JSON Response
-        ↑
-Angular displays data in browser
+```bash
+ng generate component component-name
 ```
 
----
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-## Coding Standards
+```bash
+ng generate --help
+```
 
-This project follows Standard coding conventions:
+## Building
 
-- Member variables prefixed with `m_` and type prefix (e.g. `m_strName`, `m_iCount`)
-- Classes and methods use PascalCase (e.g. `EmployeeController`, `GetAll()`)
-- Constants use FULL_CAPS_SNAKE_CASE (e.g. `MAX_RETRY_COUNT`)
-- Properties use PascalCase with no type prefix (e.g. `TotalAmount`)
-- One variable declaration per line
-- Parameterized SQL queries to prevent SQL injection
+To build the project run:
 
----
+```bash
+ng build
+```
 
-## What I Learned
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-Building this project covered the full Software Engineering syllabus:
+## Running unit tests
 
-- **C# & OOP** — all 4 pillars (encapsulation, inheritance, polymorphism, abstraction), generics, LINQ, lambda expressions, exception handling
-- **MySQL** — CRUD, constraints, joins, stored procedures, normalization (1NF, 2NF, 3NF)
-- **ASP.NET Web API** — REST principles, routing, dependency injection, CORS configuration
-- **Angular** — components, services, HttpClient, Observables, data binding, lifecycle hooks
-- **Full Stack Integration** — connecting Angular frontend to C# API to MySQL database
+To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
 
----
+```bash
+ng test
+```
 
-## Author
+## Running end-to-end tests
 
-Martin — Fresher Developer
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
